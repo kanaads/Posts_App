@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:posts_app/screens/about_screen.dart';
+import 'package:posts_app/screens/home_screen.dart';
 
 class ScaffoldWrapper extends StatelessWidget {
   final Widget child;
@@ -20,15 +22,21 @@ class ScaffoldWrapper extends StatelessWidget {
             ListTile(
               title: Text('All Posts'),
               onTap: () {
-                Navigator.pop(context); // Close drawer
-                Navigator.pushReplacementNamed(context, '/');
+                Navigator.pop(context); 
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => HomeScreen())
+                );  
               },
             ),
             ListTile(
               title: Text('About'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushReplacementNamed(context, '/about');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutScreen())
+                );                  
               },
             ),
           ],

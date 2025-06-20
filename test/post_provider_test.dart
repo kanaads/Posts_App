@@ -6,7 +6,6 @@ void main() {
   test('filter shows only post with userId == 1', () {
     final provider = PostProvider();
 
-    // Use the test-only injection method
     provider.injectTestPosts([
       Post(id: 1, userId: 1, title: 'Post 1', body: 'Post 1 body'),
       Post(id: 2, userId: 2, title: 'Post 2', body: 'Post 2 body'),

@@ -15,23 +15,23 @@ class PostProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
 
   Future<void> fetchPosts() async {
-  _isLoading = true;
-  _error = null;
-  notifyListeners();
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
 
-  try {
-    debugPrint('Fetching posts...');
-    _allPosts = await _apiService.fetchPosts();
-    _visiblePosts = List.from(_allPosts);
-    debugPrint('Posts fetched: ${_allPosts.length}');
-  } catch (e) {
-    debugPrint('Fetch failed: $e');
-    _error = 'Failed to load posts. Please try again.';
+    try {
+      debugPrint('Fetching posts...');
+      _allPosts = await _apiService.fetchPosts();
+      _visiblePosts = List.from(_allPosts);
+      debugPrint('Posts fetched: ${_allPosts.length}');
+    } catch (e) {
+      debugPrint('Fetch failed: $e');
+      _error = 'Failed to load posts. Please try again.';
+    }
+
+    _isLoading = false;
+    notifyListeners();
   }
-
-  _isLoading = false;
-  notifyListeners();
-}
 
 
   void filter(String input) {
@@ -56,4 +56,3 @@ class PostProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
